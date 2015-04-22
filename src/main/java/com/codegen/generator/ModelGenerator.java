@@ -64,15 +64,22 @@ public class ModelGenerator {
 	public static void main(String[] args) throws IOException,
 			TemplateException {
 
-		UserPreferences preferences = new UserPreferences("pos", "POS",
-				"/Users/kbethalam/Desktop/generated-source-new", "com.minimart", "8081", "root", "password");
+//		UserPreferences(String databaseName, String appNameAcronym, String appRootDirectory,
+//				String appPacakgeName, String appWebPort, String dbUserName, String dbPassword)
+		
+		UserPreferences preferences = new UserPreferences("angelrewards", "AngelRewards",
+				"/Users/kbethalam/Desktop/generated-sources/AngelRewards", "com.angelrewards", "8081", "root", "root");
 
 		List<ClassDefinition> classDefinitions = ClassDefinitionImporter
-				.importFromExcel("/Users/kbethalam/Documents/DBSchema.xlsx");
+				.importFromExcel("/Users/kbethalam/Downloads/DBSchema-Angel-Rewards.xlsx", -1);
 
 		System.out.println(preferences.getAppWebPort());
+		
+
 		ModelGenerator modelGenerator = new ModelGenerator(preferences,
 				classDefinitions);
+		
+		modelGenerator.generateSQLScript();
 		modelGenerator.generateModels();
 		
 		modelGenerator.generateWebResources();
@@ -81,8 +88,8 @@ public class ModelGenerator {
 		queryGenerator.generateQueries();
 		
 //		ShellComandInvoker.executeCommand("cd " + preferences.getAppRootDirectory());
-//		ShellComandInvoker.executeMVNCommand("mvn eclipse:eclipse");
-//		ShellComandInvoker.executeMVNCommand("mvn clean package install -DskipTests");
+//		ShellComandInvoker.executeCommand("mvn eclipse:eclipse");
+//		ShellComandInvoker.executeCommand("mvn clean package install -DskipTests");
 
 	}
 
@@ -108,7 +115,6 @@ public class ModelGenerator {
 			generateRestClient(classDefinition);
 			generateServiceTest(classDefinition);
 		}
-		generateSQLScript();
 
 	}
 
@@ -540,6 +546,7 @@ public class ModelGenerator {
 		fileWriter.close();
 	}
 	private String getVariableName(String className) {
+		System.out.println("Getting variable name out of className :" + className);
 		return className.substring(0, 1).toLowerCase() + className.substring(1);
 	}
 

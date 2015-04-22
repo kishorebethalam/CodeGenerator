@@ -16,6 +16,7 @@ import ${basePackage}.service.${className}Service;
 import ${basePackage}.dao.${className}DAO;
 import ${basePackage}.dao.impl.${className}DAOImpl;
 import ${basePackage}.dto.${className}DTO;
+//import ${basePackage}.search.${classDefinition.className}SearchCriteria;
 
 @Path("${variableName}")
 public class ${className}ServiceImpl implements ${className}Service {
@@ -28,23 +29,23 @@ public class ${className}ServiceImpl implements ${className}Service {
 	@Path("add")
 	@POST
 	@Consumes( MediaType.APPLICATION_JSON)
-	public int add${className}(${className} ${variableName}){
-		return this.${variableName}DAO.add${className}(${variableName});
+	public String add${className}(${className} ${variableName}){
+		return "{\"id\": " +  this.${variableName}DAO.add${className}(${variableName}) + " }";
 	}
 	
 	@Path("update")
 	@PUT
 	@Consumes( MediaType.APPLICATION_JSON)
-	public int update${className}(${className} ${variableName}){
+	public String update${className}(${className} ${variableName}){
 		this.${variableName}DAO.update${className}(${variableName});
-		return ${variableName}.getId();
+		return "{\"id\": " +  ${variableName}.getId()+ " }";
 	}
 	
 	@Path("{id}")
 	@DELETE
-	public int delete${className}(@PathParam("id") int id){
+	public String delete${className}(@PathParam("id") int id){
 		this.${variableName}DAO.delete${className}(id);
-		return id;
+		return "{\"id\": " +  id+ " }";
 	}
 	
 	@Path("{id}")
@@ -74,11 +75,12 @@ public class ${className}ServiceImpl implements ${className}Service {
 	public List<${className}DTO> getAll${className}DTOs(){
 		return this.${variableName}DAO.getAll${className}DTOs();
 	}
-	@Path("search")
+/*	@Path("search")
 	@POST
 	@Produces( MediaType.APPLICATION_JSON)
-	public List<${className}> get${classNamePlural}ByCriteria(Object criterion){
+	public List<${className}> get${classNamePlural}ByCriteria(${className}SearchCriteria criterion){
 		return this.${variableName}DAO.get${classNamePlural}ByCriteria(criterion);
 	}
+	*/
 }
 

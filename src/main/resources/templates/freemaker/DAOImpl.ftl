@@ -12,6 +12,7 @@ import ${basePackage}.dao.${className}DAO;
 import ${basePackage}.dao.util.DAOException;
 import ${basePackage}.dao.util.DBUtil;
 import ${basePackage}.dto.${className}DTO;
+//import ${basePackage}.search.${classDefinition.className}SearchCriteria;
 
 public class ${className}DAOImpl implements ${className}DAO {
 	
@@ -202,10 +203,35 @@ public class ${className}DAOImpl implements ${className}DAO {
         
         return results ;
 	}
-	
-	public List<${className}> get${classNamePlural}ByCriteria(Object criterion){
-		return null;
-	}
-	
+	/*
+	public List<${className}> get${classNamePlural}ByCriteria(${className}SearchCriteria criterion){
+		
+		List<${className}> results  = new ArrayList<${className}>(); 
+		
+		Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        
+        String query = criterion.toQueryString();
+        
+        Object[] parameters = {};
+        try {
+            connection = DBUtil.getConnection();
+            preparedStatement = DBUtil.prepareStatement(connection, query, false, parameters);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+            	${className} ${variableName} = new ${className}();
+            	${variableName}.loadFromResultSet(resultSet);
+            	results.add(${variableName});
+            }
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        } finally {
+            DBUtil.close(connection, preparedStatement, resultSet);
+        }
+        
+        return results ;	
+    }
+	*/
 	
 }

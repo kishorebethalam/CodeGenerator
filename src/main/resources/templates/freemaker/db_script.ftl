@@ -1,4 +1,4 @@
-drop database ${userPreferences.databaseName};
+drop database if exists ${userPreferences.databaseName};
 create database ${userPreferences.databaseName};
 connect ${userPreferences.databaseName};
 
@@ -11,7 +11,7 @@ create table if not exists ${classDefinition.tableName} (
 	<#assign noOfUniqueKeys = uniqueColumnsData?size>
 	ID int not null primary key auto_increment,
 	<#list classDefinition.columns as columnData>
-	${columnData.dbColumnIdentifier} ${columnData.dbColumnType} <#if columnData.notNull>not null</#if><#if columnData_has_next>,<#else><#if noOfForeignKeys!=0>,</#if></#if>
+	${columnData.dbColumnIdentifier} ${columnData.dbColumnType} <#if columnData.notNull>not null</#if><#if columnData_has_next>,<#else><#if noOfForeignKeys!=0>,<#else><#if noOfUniqueKeys!=0>,</#if></#if></#if>
 	</#list>
 	
 	<#list foreignKeyColumnsData as columnData>

@@ -18,7 +18,7 @@ public class ${className}ServiceTest {
 		// TODO Auto-generated constructor stub
 		service = new ${className}ServiceImpl();
 	}
-	
+/*	
 	@Test
 	public void test${className}CRUD() throws Exception
 	{
@@ -59,6 +59,6 @@ public class ${className}ServiceTest {
 		assertEquals(allItemsAfterDelete.size(), originalItems.size());
 	}
 	
-	
+*/	
 
 }

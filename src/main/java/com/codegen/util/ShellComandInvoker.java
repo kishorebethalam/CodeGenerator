@@ -1,28 +1,25 @@
 package com.codegen.util;
 
 import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 
 public class ShellComandInvoker {
 
 	public static void main(String[] args) {
 
-		ShellComandInvoker obj = new ShellComandInvoker();
-
-		String domainName = "google.com";
-
-		// in mac oxs
-		String command = "ping -c 3 " + domainName;
-
-		// in windows
-		// String command = "ping -n 3 " + domainName;
-
-		String output = obj.executeCommand(command);
-
-		System.out.println(output);
+//		ShellComandInvoker obj = new ShellComandInvoker();
+//
+//		String domainName = "google.com";
+//
+//		// in mac oxs
+//		String command = "ping -c 3 " + domainName;
+//
+//		// in windows
+//		// String command = "ping -n 3 " + domainName;
+//
+//		String output = obj.executeCommand(command);
+//
+//		System.out.println(output);
 
 	}
 
@@ -49,36 +46,37 @@ public class ShellComandInvoker {
 		return output.toString();
 
 	}
-
-	static public String[] executeMVNCommand(String cmd) throws IOException {
-
-		// The actual procedure for process execution:
-		// runCommand(String cmd);
-		// Create a list for storing output.
-		ArrayList list = new ArrayList();
-		// Execute a command and get its process handle
-		Process proc = Runtime.getRuntime().exec(cmd);
-		// Get the handle for the processes InputStream
-		InputStream istr = proc.getInputStream();
-		// Create a BufferedReader and specify it reads
-		// from an input stream.
-
-		BufferedReader br = new BufferedReader(new InputStreamReader(istr));
-		String str; // Temporary String variable
-		// Read to Temp Variable, Check for null then
-		// add to (ArrayList)list
-		while ((str = br.readLine()) != null)
-			list.add(str);
-		// Wait for process to terminate and catch any Exceptions.
-		try {
-			proc.waitFor();
-		} catch (InterruptedException e) {
-			System.err.println("Process was interrupted");
-		}
-		// Note: proc.exitValue() returns the exit value.
-		// (Use if required)
-		br.close(); // Done.
-		// Convert the list to a string and return
-		return (String[]) list.toArray(new String[0]);
-	}
+//
+//	static public String[] executeMVNCommand(String cmd) throws IOException {
+//
+//		// The actual procedure for process execution:
+//		// runCommand(String cmd);
+//		// Create a list for storing output.
+//		ArrayList list = new ArrayList();
+//		// Execute a command and get its process handle
+//		Process proc = Runtime.getRuntime().exec(cmd);
+//		Runtime.getRuntime().
+//		// Get the handle for the processes InputStream
+//		InputStream istr = proc.getInputStream();
+//		// Create a BufferedReader and specify it reads
+//		// from an input stream.
+//
+//		BufferedReader br = new BufferedReader(new InputStreamReader(istr));
+//		String str; // Temporary String variable
+//		// Read to Temp Variable, Check for null then
+//		// add to (ArrayList)list
+//		while ((str = br.readLine()) != null)
+//			list.add(str);
+//		// Wait for process to terminate and catch any Exceptions.
+//		try {
+//			proc.waitFor();
+//		} catch (InterruptedException e) {
+//			System.err.println("Process was interrupted");
+//		}
+//		// Note: proc.exitValue() returns the exit value.
+//		// (Use if required)
+//		br.close(); // Done.
+//		// Convert the list to a string and return
+//		return (String[]) list.toArray(new String[0]);
+//	}
 }

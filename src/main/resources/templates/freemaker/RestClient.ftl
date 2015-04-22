@@ -16,23 +16,27 @@ public class ${className}RESTClient  extends BaseRESTClient {
 		super(baseUrl);
 	}
 
-	public int add${className}(${className} ${variableName}) {
+	public String add${className}(${className} ${variableName}) {
 
 		ClientResponse response = this.processRequest("${variableName}/add", HttpMethod.POST, ${variableName});
-		Integer id = response.getEntity(Integer.class);
+		String id = response.getEntity(String.class);
 		return id;
 	}
 	
-	public void update${className}(${className} ${variableName}) {
+	public String update${className}(${className} ${variableName}) {
 
 		@SuppressWarnings("unused")
 		ClientResponse response = this.processRequest("${variableName}/update", HttpMethod.PUT, ${variableName});
+		String id = response.getEntity(String.class);
+		return id;
 	}
 	
-	public void delete${className}(${className} ${variableName}) {
+	public String delete${className}(${className} ${variableName}) {
 
 		@SuppressWarnings("unused")
 		ClientResponse response = this.processRequest("${variableName}/" + ${variableName}.getId(), HttpMethod.DELETE, null);
+		String id = response.getEntity(String.class);
+		return id;
 	}
 	
 	public ${className} get${className}(int id) {

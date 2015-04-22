@@ -15,13 +15,13 @@ import java.util.Properties;
 public final class DBUtil {
 
 	private final static String userName = "${userPreferences.dbUserName}";
-//	private final static String password = "${userPreferences.dbPassword}";
+	private final static String password = "${userPreferences.dbPassword}";
 
 	private static Properties Queries = new Properties();
 
 	private final static String dbURL = "jdbc:mysql://localhost/${userPreferences.databaseName}?zeroDateTimeBehavior=convertToNull&" +
-	// "user="+userName+"&password="+password;
-			"user=" + userName;
+	 "user="+userName+"&password="+password;
+//			"user=" + userName;
 
 	// Constructors
 	// -------------------------------------------------------------------------------
