@@ -34,7 +34,8 @@ public class ModelGenerator {
 
 	protected static String templatesFolderPath = "/Users/kbethalam/Documents/workspaces/personal/CodeGenerator/src/main/resources/templates/freemaker/";
 	protected static String webappsFolderPath = "/Users/kbethalam/Documents/workspaces/personal/CodeGenerator/src/main/webapp";
-
+	protected static String schemaFileLocation = "/Users/kbethalam/Downloads/DBSchema-Angel-Rewards.xlsx";
+	
 	protected UserPreferences userPreferences;
 	protected List<ClassDefinition> classDefinitions;
 
@@ -67,11 +68,11 @@ public class ModelGenerator {
 //		UserPreferences(String databaseName, String appNameAcronym, String appRootDirectory,
 //				String appPacakgeName, String appWebPort, String dbUserName, String dbPassword)
 		
-		UserPreferences preferences = new UserPreferences("angelrewards", "AngelRewards",
-				"/Users/kbethalam/Desktop/generated-sources/AngelRewards", "com.angelrewards", "8081", "root", "root");
+		UserPreferences preferences = new UserPreferences("angelrewards", "AngelRewardsNew",
+				"/Users/kbethalam/Desktop/generated-sources/AngelRewardsNew", "com.angelrewards", "8081", "root", "root");
 
 		List<ClassDefinition> classDefinitions = ClassDefinitionImporter
-				.importFromExcel("/Users/kbethalam/Downloads/DBSchema-Angel-Rewards.xlsx", -1);
+				.importFromExcel(schemaFileLocation, -1);
 
 		System.out.println(preferences.getAppWebPort());
 		

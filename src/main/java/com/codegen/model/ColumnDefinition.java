@@ -17,7 +17,7 @@ public class ColumnDefinition {
 
 
 	public void setFieldIdentifier(String fieldIdentifier) {
-		this.fieldIdentifier = fieldIdentifier;
+		this.fieldIdentifier = fieldIdentifier.substring(0, 1).toLowerCase().concat(fieldIdentifier.substring(1));
 	}
 
 
@@ -37,7 +37,7 @@ public class ColumnDefinition {
 
 
 	public void setDbColumnIdentifier(String dbColumnIdentifier) {
-		this.dbColumnIdentifier = dbColumnIdentifier;
+		this.dbColumnIdentifier = dbColumnIdentifier.toUpperCase();
 	}
 
 
